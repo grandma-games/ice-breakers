@@ -1,10 +1,14 @@
 $(document).ready(() => {
   const socket = io();
 
-  const username = window.prompt("Enter username: ");
+  function sanitize(input) {
+    return input.replace(/(<([^>]+)>)/ig, '');
+  }
 
-  $('#topicBtn').click(() => {
-    socket.emit('askTopic', null);
+  const username = sanitize(window.prompt('Enter username: '));
+
+  $('#topic-btn').click(() => {
+    socket.emit('ask-topic', null);
   });
 
   socket.on('currentTopic', (data) => {
@@ -16,11 +20,12 @@ $(document).ready(() => {
   const chatForm = $('#chat-form');
 
   let typing = false;
+  chatInput.focus();
 
   // add a chat cell to our chat list view, and scroll to the bottom
   socket.on('addToChat', (data) => {
     console.log('got a chat message');
-    chatText.append(`<div class='chatCell'>` + data + '</div>');
+    chatText.append(`<div class='chat-cell'>${data}</div>`);
     $('html, body').scrollTop($(document).height());
   });
 
@@ -28,15 +33,15 @@ $(document).ready(() => {
     // prevent the form from refreshing the page
     e.preventDefault();
     // call sendMsgToServer socket function, with form text value as argument
-    socket.emit('sendMsgToServer', username + ':  ' + $('#chat-input').val());
-    $('#chat-input').val('');
+    socket.emit('sendMsgToServer', `<span class='username'>${username}</span><span class='msg'>${sanitize(chatInput.val())}</span><span class='right'></span>`);
+    chatInput.val('');
   });
 
     $(document).on('DOMContentLoaded', () => {
-    $('#chat-input').on('focus', () => {
+    chatInput.on('focus', () => {
       typing = true;
     });
-    $('#chat-input').on('blur', () => {
+    chatInput.on('blur', () => {
       typing = false;
     });
   });

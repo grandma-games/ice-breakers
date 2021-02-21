@@ -20,7 +20,7 @@ let topicIdx = Math.floor(Math.random() * topics.length);
 
 // New User
 const io = require('socket.io')(server);
-io.sockets.on('connection', function(socket){              
+io.sockets.on('connection', function(socket) {              
   console.log('New User');
 
   let playerId = Math.random();
@@ -34,21 +34,21 @@ io.sockets.on('connection', function(socket){
   // User Sent Message
   socket.on('sendMsgToServer',function(data) {     
     console.log('New Message Sent:' + data);
-    for(let i in SOCKET_LIST){
+    for(let i in SOCKET_LIST) {
       SOCKET_LIST[i].emit('addToChat', data);
     }          
   });
 
   // User Disconnect
-  socket.on('disconnect',function(){
+  socket.on('disconnect',function() {
     console.log('User Disconnect');
     delete SOCKET_LIST[socket.id];
   });
 
   // Update All Users' topics
-  socket.on('askTopic',function(data){
+  socket.on('askTopic',function(data) {
     topicIdx = Math.floor(Math.random() * topics.length);
-    for(let i in SOCKET_LIST){
+    for(let i in SOCKET_LIST) {
       SOCKET_LIST[i].emit('currentTopic', topics[topicIdx]);
     } 
   });
