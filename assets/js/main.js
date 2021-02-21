@@ -32,7 +32,7 @@ $(document).ready(() => {
     $('#chat-input').val('');
   });
 
-  $(window).on('load', () => {
+    $(document).on('DOMContentLoaded', () => {
     $('#chat-input').on('focus', () => {
       typing = true;
     });
