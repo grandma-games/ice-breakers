@@ -5,10 +5,10 @@ $(document).ready(() => {
     return input.replace(/(<([^>]+)>)/ig, '');
   }
 
-  const username = sanitize(window.prompt('Enter username: '));
+  const username = window.prompt('Enter username: ');
 
   $('#topic-btn').click(() => {
-    socket.emit('ask-topic', null);
+    socket.emit('askTopic', null);
   });
 
   socket.on('currentTopic', (data) => {
@@ -33,7 +33,8 @@ $(document).ready(() => {
     // prevent the form from refreshing the page
     e.preventDefault();
     // call sendMsgToServer socket function, with form text value as argument
-    socket.emit('sendMsgToServer', `<span class='username'>${username}</span><span class='msg'>${sanitize(chatInput.val())}</span><span class='right'></span>`);
+    socket.emit('sendMsgToServer', `<span class='username'>${sanitize(username)}</span>` +
+          `<span class='msg'>${sanitize(chatInput.val())}</span><span class='right'></span>`);
     chatInput.val('');
   });
 

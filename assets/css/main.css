@@ -1,5 +1,5 @@
 body {
-  font-family: Helvetica;
+  font-family: 'Roboto', sans-serif;
   color: #f4f4f4;
   background: #0a081b;
   padding: 10px;
@@ -46,7 +46,6 @@ body {
   width: 100%;
   height: 15%;
   padding: 20px;
-  /* margin: auto auto 1px auto; */
   margin: 0 auto;
 }
 
