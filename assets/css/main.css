@@ -1,6 +1,14 @@
 body {
+  font-family: Helvetica;
+  color: #f4f4f4;
   background: #0a081b;
-}   
+  padding: 10px;
+}
+
+#title {
+  margin-left: 5%;
+  margin-bottom: 30px;
+}
 
 #topic {
   padding-top: 5%;
@@ -9,11 +17,10 @@ body {
 
 .box {
   background: #242627;
-  color: #f4f4f4;
   width: 90%;
   height: 90%;
   border-radius: 6px;
-  margin: 5% auto auto auto;
+  margin-left: 5%;
   padding: 10px;
   text-align: center;
   box-shadow: 5px 5px 10px #888888;
@@ -21,7 +28,6 @@ body {
 
 .chatBox {
   background: #303334;
-  color: #f4f4f4;
   border-radius: 5px;
   width: 90%;
   height: 60%;
@@ -33,7 +39,6 @@ body {
 
 .chatCell {
   background: #242627;
-  color: #f4f4f4;
   width: 100%;
   height: 15%;
   padding: 20px;

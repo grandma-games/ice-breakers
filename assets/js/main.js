@@ -19,20 +19,18 @@ $(document).ready(() => {
   socket.on('addToChat', (data) => {
     console.log('got a chat message');
     chatText.append(`<div class='chatCell'>` + data + '</div>');
-    chatText.scrollTop(chatText[0].scrollHeight);
+    $('html, body').scrollTop($(document).height());
   });
 
   chatForm.submit((e) => {
     // prevent the form from refreshing the page
     e.preventDefault();
-
     // call sendMsgToServer socket function, with form text value as argument
     socket.emit('sendMsgToServer', $('#chat-input').val());
     $('#chat-input').val('');
   });
 
-  // $(document).load(() => {
-  $(document).on('DOMContentLoaded', () => {
+  $(window).on('load', () => {
     $('#chat-input').on('focus', () => {
       typing = true;
     });
@@ -41,7 +39,6 @@ $(document).ready(() => {
     });
   });
 
-  // document.onkeyup = (event) => {
   $(document).keyup((event) => {
     // user pressed and released enter key
     if (event.keyCode === 13) {
