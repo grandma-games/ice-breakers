@@ -1,0 +1,52 @@
+body {
+  background: #0a081b;
+}   
+
+#topic {
+  padding-top: 5%;
+  font-size: 1.3em;
+}
+
+.box {
+  background: #242627;
+  color: #f4f4f4;
+  width: 90%;
+  height: 90%;
+  border-radius: 6px;
+  margin: 5% auto auto auto;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+.chatBox {
+  background: #303334;
+  color: #f4f4f4;
+  border-radius: 5px;
+  width: 90%;
+  height: 60%;
+  margin: 5% auto 5% auto;
+  border: 1px solid;
+  border-color: #f4f4f4;
+  overflow-y: scroll;
+}
+
+.chatCell {
+  background: #242627;
+  color: #f4f4f4;
+  width: 100%;
+  height: 15%;
+  padding: 20px;
+  margin: auto auto 1px auto;
+}
+
+.btn {
+  background: #2d7faf;
+  height: 30px;
+  color: white;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background: #236185;
+}
