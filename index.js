@@ -17,7 +17,7 @@ console.log('Server started.');
 
 SOCKET_LIST = {}; 
 let players = {};
-let currTopicIndex = Math.floor(Math.random() * topics.length);
+let topicIdx = Math.floor(Math.random() * topics.length);
 
 // New User
 const io = require('socket.io')(server);
@@ -30,7 +30,7 @@ io.sockets.on('connection', function(socket){
   // Inform User's their ID
   socket.emit('setPlayerId', playerId);
   // Send Current Topic
-  socket.emit('currentTopic', currTopicIndex);
+  socket.emit('currentTopic', topics[topicIdx]);
 
   // User Sent Message
   socket.on('sendMsgToServer',function(data) {     
@@ -48,9 +48,9 @@ io.sockets.on('connection', function(socket){
 
   // Update All Users' topics
   socket.on('askTopic',function(data){
-    currTopicIndex = Math.floor(Math.random() * topics.length);
+    topicIdx = Math.floor(Math.random() * topics.length);
     for(let i in SOCKET_LIST){
-      SOCKET_LIST[i].emit('currentTopic', currTopicIndex);
+      SOCKET_LIST[i].emit('currentTopic', topics[topicIdx]);
     } 
   });
 });
