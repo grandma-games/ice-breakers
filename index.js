@@ -3,8 +3,7 @@ const app = express();
 
 const server = require('http').createServer(app);
 
-const data = require('./assets/data/topics.json');
-const topics = data['topics'];
+const topics = require('./assets/data/topics.json')['topics'];
 
 app.get('/',function(req, res) {
     res.sendFile(__dirname + '/index.html');

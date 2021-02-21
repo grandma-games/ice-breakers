@@ -1,6 +1,8 @@
 $(document).ready(() => {
   const socket = io();
 
+  const username = window.prompt("Enter username: ");
+
   $('#topicBtn').click(() => {
     socket.emit('askTopic', null);
   });
@@ -26,7 +28,7 @@ $(document).ready(() => {
     // prevent the form from refreshing the page
     e.preventDefault();
     // call sendMsgToServer socket function, with form text value as argument
-    socket.emit('sendMsgToServer', $('#chat-input').val());
+    socket.emit('sendMsgToServer', username + ':  ' + $('#chat-input').val());
     $('#chat-input').val('');
   });
 

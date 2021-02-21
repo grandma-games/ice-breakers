@@ -21,7 +21,8 @@ body {
   height: 90%;
   border-radius: 6px;
   margin-left: 5%;
-  padding: 10px;
+  margin-right: 5%;
+  padding: 30px;
   text-align: center;
   box-shadow: 5px 5px 10px #888888;
 }
@@ -45,9 +46,22 @@ body {
   margin: auto auto 1px auto;
 }
 
+#chat-input {
+  width: 30%;
+  height: auto;
+  padding: 10px;
+}
+
+.btn-container {
+  padding: 20px;
+}
+
 .btn {
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
   background: #2d7faf;
-  height: 30px;
+  height: 40px;
+  width: 5%;
   color: white;
   border-radius: 4px;
 }
