@@ -27,6 +27,10 @@ $(document).ready(() => {
     console.log('got a chat message');
     chatText.append(`<div class='chat-cell'>${data}</div>`);
     $('html, body').scrollTop($(document).height());
+    // If we have more than 10 messages in chat, delete top (last) message
+    if ($('.chat-cell').length > 10) {
+      $('.chat-cell')[0].remove();
+    }
   });
 
   chatForm.submit((e) => {
